@@ -45,7 +45,7 @@ var app = Vue.createApp({
         }
 
         this.page = 1;
-        axios.get('http://www.omdbapi.com/?apikey=' + MY_API_KEY + '&s=' + this.search + '&type=' + this.type + '&y=' + this.year + '&page=' + this.page).then(function (resp) {
+        axios.get('https://www.omdbapi.com/?apikey=' + MY_API_KEY + '&s=' + this.search + '&type=' + this.type + '&y=' + this.year + '&page=' + this.page).then(function (resp) {
           // this.result = resp.data;
           _this.changeStar(resp.data);
         });
@@ -57,14 +57,14 @@ var app = Vue.createApp({
       var _this2 = this;
 
       this.page = new_page;
-      axios.get('http://www.omdbapi.com/?apikey=' + MY_API_KEY + '&s=' + this.search + '&type=' + this.type + '&y=' + this.year + '&page=' + this.page).then(function (resp) {
+      axios.get('https://www.omdbapi.com/?apikey=' + MY_API_KEY + '&s=' + this.search + '&type=' + this.type + '&y=' + this.year + '&page=' + this.page).then(function (resp) {
         _this2.changeStar(resp.data);
       });
     },
     moreInfo: function moreInfo(imdbID) {
       var _this3 = this;
 
-      axios.get('http://www.omdbapi.com/?apikey=' + MY_API_KEY + '&i=' + imdbID + '&plot=full').then(function (resp) {
+      axios.get('https://www.omdbapi.com/?apikey=' + MY_API_KEY + '&i=' + imdbID + '&plot=full').then(function (resp) {
         _this3.details = resp.data;
         _this3.showModal = true;
       });
