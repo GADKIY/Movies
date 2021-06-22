@@ -1,0 +1,108 @@
+.img_wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+}
+.img_wrap::before {
+  content: "";
+  display: block;
+  padding-top: 140%;
+  box-shadow: 0 0 10px 6px #000 inset;
+  position: relative;
+  z-index: 1;
+}
+.img_wrap img {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  top: 50%;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+}
+.img_wrap button {
+  z-index: 1;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.modal.show {
+  display: block;
+}
+.modal img {
+  height: 50%;
+}
+
+.rating_item {
+  margin-bottom: 14px;
+}
+
+.rating_scale {
+  border: 1px solid #555;
+  height: 10px;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+  background: #f10434;
+  background: -moz-linear-gradient(90deg, #f10434 7%, #16ff00 96%);
+  background: -webkit-linear-gradient(90deg, #f10434 7%, #16ff00 96%);
+  background: linear-gradient(90deg, #f10434 7%, #16ff00 96%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f10434", endColorstr="#16ff00", GradientType=1);
+  margin-top: 6px;
+}
+.rating_scale span {
+  display: inline-block;
+  height: 10px;
+  background-color: #dcdcdc;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.fade_screen {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 19;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(3px);
+}
+.fade_screen.opened {
+  display: block;
+}
+.fade_screen .fav_panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 50%;
+  background-color: #fff;
+  padding: 10px 0 10px 10px;
+  z-index: 10;
+}
+.fade_screen .fav_panel .fav_list {
+  height: calc(100vh - 80px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 5px;
+}
+
+span.page-link,
+span.page-link:hover {
+  z-index: 3;
+  color: #fff;
+  background-color: #0d6efd;
+}
+
+.movie-list.rows_view .col {
+  width: 100%;
+}
+.movie-list.rows_view .col .card-body.flex-column {
+  flex-direction: row !important;
+}
+.movie-list.rows_view .col .img_wrap {
+  width: calc(15%);
+}

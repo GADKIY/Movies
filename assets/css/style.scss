@@ -1,0 +1,112 @@
+.img_wrap{
+    position: relative;
+    overflow: hidden;
+    border-radius: 3px;
+    &::before{
+        content: '';
+        display: block;
+        padding-top: 140%;
+        box-shadow: 0 0 10px 6px #000 inset;
+        position: relative;
+        z-index: 1;
+    }
+    img{
+        position: absolute;
+        width: 100%;
+        // height: 100%;
+        left: 50%;
+        top: 50%;
+        object-fit: contain;
+        transform: translate(-50%, -50%);
+    }
+    button{
+        z-index: 1;
+    }
+}
+
+.modal{
+    background-color: rgba($color: #000000, $alpha: .7);
+    &.show{
+        display: block;
+    }
+    img{
+        height: 50%;
+    }
+}
+
+.rating_item{
+    margin-bottom: 14px;
+
+}
+
+.rating_scale{
+    border: 1px solid #555;
+    height: 10px;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    background: rgb(241, 4, 52);
+    background: -moz-linear-gradient(90deg, rgba(241, 4, 52, 1) 7%, rgba(22, 255, 0, 1) 96%);
+    background: -webkit-linear-gradient(90deg, rgba(241, 4, 52, 1) 7%, rgba(22, 255, 0, 1) 96%);
+    background: linear-gradient(90deg, rgba(241, 4, 52, 1) 7%, rgba(22, 255, 0, 1) 96%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f10434", endColorstr="#16ff00", GradientType=1);
+    margin-top: 6px;
+    span{
+        display: inline-block;
+        height: 10px;
+        background-color: #dcdcdc;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+}
+
+.fade_screen{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 19;
+    background: rgba($color: #000000, $alpha: .7);
+    backdrop-filter: blur(3px);
+    &.opened{
+        display: block;
+    }
+    .fav_panel{
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        width: 50%;
+        background-color: #fff;
+        padding: 10px 0 10px 10px;
+        z-index: 10;
+        .fav_list{
+            height: calc(100vh - 80px);
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 5px;
+        }
+    }
+}
+
+span.page-link,
+span.page-link:hover {
+    z-index: 3;
+    color: #fff;
+    background-color: #0d6efd;
+}
+
+.movie-list.rows_view{
+    .col{
+        width: 100%;
+        .card-body.flex-column{
+            flex-direction: row!important;
+        }
+        .img_wrap{
+            width: calc(15%);
+        }
+    }
+}
