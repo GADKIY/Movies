@@ -23,6 +23,20 @@
   z-index: 1;
 }
 
+/* .dark_theme{
+    body{
+        background-color: #232323;
+    }
+    .card-body{
+        background-color: #232323;
+        color: #fff;
+    }
+    template{
+        .fav_panel {
+            background-color: #232323;
+        }
+    }
+} */
 .modal {
   background-color: rgba(0, 0, 0, 0.7);
 }
@@ -105,4 +119,61 @@ span.page-link:hover {
 }
 .movie-list.rows_view .col .img_wrap {
   width: calc(15%);
+}
+
+.btn_blocks {
+  width: 39px;
+  height: 39px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 2px;
+}
+.btn_blocks span {
+  width: 12px;
+  height: 12px;
+  background-color: #555;
+}
+
+.btn_rows {
+  width: 39px;
+  height: 39px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 2px;
+}
+.btn_rows span {
+  width: 95%;
+  height: 5px;
+  background-color: #555;
+}
+
+.options {
+  width: 100px;
+  height: 300px;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  padding: 10px;
+  position: absolute;
+  border: 1px solid #efefee;
+  border-radius: 4px;
+  position: absolute;
+  right: 10%;
+  top: 19%;
+  z-index: 2;
+  background-color: #fff;
+}
+.options.opened {
+  display: flex;
+}
+
+.btn_clear {
+  width: 60px;
+  height: 39px;
 }

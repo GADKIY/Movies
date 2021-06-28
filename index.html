@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark_theme">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,6 +14,7 @@
 
         
         <fav_panel :list="fav_list" :show="showPanel"></fav_panel>
+        <options :show="showOpt"></options>
 
         <div class="container mt-4">
             <div class="card mb-4">
@@ -40,8 +41,8 @@
                             <div class="col-3">
                                 <button type="submit" class="btn btn-primary me-2">Search</button>
                                 <button class="btn btn-warning me-2" @click="showPanel=true">&star;</button>
-                                <button class="btn btn-light me-2" :class="rowView?'btn-light':'btn-dark'" @click="changeView(false)">B</button>
-                                <button class="btn btn-light" :class="!rowView?'btn-light':'btn-dark'" @click="changeView(true)">R</button>
+                                <button class="btn btn-danger me-2" @click="showOptions=true">Options</button>
+                                
                             </div>
 
                         </div>
@@ -133,8 +134,7 @@
                                     <h4 class="card-title">{{ item.Title }}</h4>
                                     <div>
                                         <div class="movie-year small">{{ item.Year }}</div>
-                                        <button type="button" class="btn btn-info" @click="moreInfo(item.imdbID)">More
-                                            info</button>
+                                        <button type="button" class="btn btn-info" @click="moreInfo(item.imdbID)">More info</button>
                                     </div>
                                 </div>
                             </div>
@@ -162,6 +162,13 @@
                 </li>
             </ul>
         </nav>
+    </template>
+    <template id="options">
+        <div class="options" :class="{'show':opened}">
+            <button class="btn btn-light btn_blocks" :class="rowView?'btn-light':'btn-dark'" @click="changeView(false)"> <span></span><span></span><span></span><span></span></button>
+            <button class="btn btn-light btn_rows" :class="!rowView?'btn-light':'btn-dark'" @click="changeView(true)"><span></span><span></span><span></span></button>
+            <button class="btn btn-secondary btn_clear" @click="clearData()">Clear</button>
+        </div>
     </template>
 
 

@@ -6,7 +6,7 @@ var MY_API_KEY = '81c3d339';
 var app = Vue.createApp({
   data: function data() {
     return {
-      search: 'Superman',
+      search: '',
       // result: { "Search": [{ "Title": "Batman v Superman: Dawn of Justice", "Year": "2016", "imdbID": "tt2975590", "Type": "movie", "Poster": "https://m.media-amazon.com/images/M/MV5BYThjYzcyYzItNTVjNy00NDk0LTgwMWQtYjMwNmNlNWJhMzMyXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg" }, { "Title": "Superman Returns", "Year": "2006", "imdbID": "tt0348150", "Type": "movie", "Poster": "https://m.media-amazon.com/images/M/MV5BNzY2ZDQ2MTctYzlhOC00MWJhLTgxMmItMDgzNDQwMDdhOWI2XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg" }, { "Title": "Superman", "Year": "1978", "imdbID": "tt0078346", "Type": "movie", "Poster": "https://m.media-amazon.com/images/M/MV5BMzA0YWMwMTUtMTVhNC00NjRkLWE2ZTgtOWEzNjJhYzNiMTlkXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg" }, { "Title": "Superman II", "Year": "1980", "imdbID": "tt0081573", "Type": "movie", "Poster": "https://m.media-amazon.com/images/M/MV5BODk2NjgzNTEtYzZhZC00ZTBkLTllMGQtMmMxMzU1NDRkM2RlXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg" }, { "Title": "Superman III", "Year": "1983", "imdbID": "tt0086393", "Type": "movie", "Poster": "https://m.media-amazon.com/images/M/MV5BMzI3ZDllMTctNmI2Mi00OGQ4LTk2ZTQtYTJhMjA5ZGI2YmRkXkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_SX300.jpg" }, { "Title": "Superman IV: The Quest for Peace", "Year": "1987", "imdbID": "tt0094074", "Type": "movie", "Poster": "https://m.media-amazon.com/images/M/MV5BMmIwZWY1YTYtNDlhOS00NDRmLWI4MzItNjk2NDc1N2NhYzNlXkEyXkFqcGdeQXVyNTUyMzE4Mzg@._V1_SX300.jpg" }, { "Title": "Superman/Batman: Apocalypse", "Year": "2010", "imdbID": "tt1673430", "Type": "movie", "Poster": "https://m.media-amazon.com/images/M/MV5BMjk3ODhmNjgtZjllOC00ZWZjLTkwYzQtNzc1Y2ZhMjY2ODE0XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg" }, { "Title": "Superman/Batman: Public Enemies", "Year": "2009", "imdbID": "tt1398941", "Type": "movie", "Poster": "https://m.media-amazon.com/images/M/MV5BZDc5NTFiMzgtZWJiOS00N2M1LWJmOGYtZmNjMzFhMzcxZjRiXkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg" }, { "Title": "Lois & Clark: The New Adventures of Superman", "Year": "1993–1997", "imdbID": "tt0106057", "Type": "series", "Poster": "https://m.media-amazon.com/images/M/MV5BZTU1ZGFjNzEtZWYzZC00ZmI0LTg2NmMtN2YyNTY4YzhlODIyXkEyXkFqcGdeQXVyMjExMjk0ODk@._V1_SX300.jpg" }, { "Title": "Superman: Doomsday", "Year": "2007", "imdbID": "tt0934706", "Type": "movie", "Poster": "https://m.media-amazon.com/images/M/MV5BMmJhN2RmMTUtMDMzMy00YTQ4LWEyZDMtOGM1NWVmMDE3NTBjXkEyXkFqcGdeQXVyNjExODE1MDc@._V1_SX300.jpg" }], "totalResults": "256", "Response": "True" },
       result: {},
       details: {},
@@ -15,6 +15,7 @@ var app = Vue.createApp({
       year: '',
       fav_list: [],
       showPanel: false,
+      showOpt: false,
       page: 1,
       rowView: false,
       search_history: []
@@ -45,7 +46,7 @@ var app = Vue.createApp({
         }
 
         this.page = 1;
-        axios.get('https://www.omdbapi.com/?apikey=' + MY_API_KEY + '&s=' + this.search + '&type=' + this.type + '&y=' + this.year + '&page=' + this.page).then(function (resp) {
+        axios.get('http://www.omdbapi.com/?apikey=' + MY_API_KEY + '&s=' + this.search + '&type=' + this.type + '&y=' + this.year + '&page=' + this.page).then(function (resp) {
           // this.result = resp.data;
           _this.changeStar(resp.data);
         });
@@ -57,14 +58,14 @@ var app = Vue.createApp({
       var _this2 = this;
 
       this.page = new_page;
-      axios.get('https://www.omdbapi.com/?apikey=' + MY_API_KEY + '&s=' + this.search + '&type=' + this.type + '&y=' + this.year + '&page=' + this.page).then(function (resp) {
+      axios.get('http://www.omdbapi.com/?apikey=' + MY_API_KEY + '&s=' + this.search + '&type=' + this.type + '&y=' + this.year + '&page=' + this.page).then(function (resp) {
         _this2.changeStar(resp.data);
       });
     },
     moreInfo: function moreInfo(imdbID) {
       var _this3 = this;
 
-      axios.get('https://www.omdbapi.com/?apikey=' + MY_API_KEY + '&i=' + imdbID + '&plot=full').then(function (resp) {
+      axios.get('http://www.omdbapi.com/?apikey=' + MY_API_KEY + '&i=' + imdbID + '&plot=full').then(function (resp) {
         _this3.details = resp.data;
         _this3.showModal = true;
       });
@@ -124,6 +125,16 @@ var app = Vue.createApp({
     changeView: function changeView(is_row) {
       this.rowView = is_row;
       localStorage.setItem('view', is_row);
+    },
+    clearData: function clearData() {
+      this.result = {};
+      type = '';
+      year = '';
+      this.search_history = [];
+      this.search = '';
+    },
+    showOptions: function showOptions() {
+      this.showOpt = false;
     }
   }
 });
@@ -207,5 +218,17 @@ app.component('pagination', {
       this.$parent.goToPage(this.page + 1);
     }
   }
+});
+app.component('options', {
+  props: ['panel', 'show'],
+  methods: {
+    changeView: function changeView(is_row) {
+      this.$parent.changeView(is_row);
+    },
+    clearData: function clearData() {
+      this.$parent.clearData();
+    }
+  },
+  template: '#options'
 });
 app.mount("#app");
