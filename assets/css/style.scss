@@ -185,3 +185,18 @@ span.page-link:hover {
     width: 60px;
     height: 39px;
 }
+
+.dark_version.darkk {
+    background-color: rgb(59, 48, 48);
+    color: #fff;
+    .card-body{
+        background-color: rgb(59, 48, 48);
+        color: #fff;
+    }
+    .modal-dialog{
+        color: #fff;
+    }
+    .modal-content{
+        background-color: rgb(59, 48, 48);
+    }
+}

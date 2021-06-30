@@ -177,3 +177,18 @@ span.page-link:hover {
   width: 60px;
   height: 39px;
 }
+
+.dark_version.darkk {
+  background-color: #3b3030;
+  color: #fff;
+}
+.dark_version.darkk .card-body {
+  background-color: #3b3030;
+  color: #fff;
+}
+.dark_version.darkk .modal-dialog {
+  color: #fff;
+}
+.dark_version.darkk .modal-content {
+  background-color: #3b3030;
+}

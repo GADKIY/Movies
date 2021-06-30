@@ -18,7 +18,8 @@ var app = Vue.createApp({
       showOpt: false,
       page: 1,
       rowView: false,
-      search_history: []
+      search_history: [],
+      dark_theme: false
     };
   },
   created: function created() {
@@ -127,14 +128,21 @@ var app = Vue.createApp({
       localStorage.setItem('view', is_row);
     },
     clearData: function clearData() {
-      this.result = {};
+      this.result = {
+        Search: [],
+        totalResults: 0
+      };
       type = '';
       year = '';
       this.search_history = [];
       this.search = '';
     },
     showOptions: function showOptions() {
-      this.showOpt = false;
+      this.showOpt = !this.showOpt;
+    },
+    darkTheme: function darkTheme(dark) {
+      this.dark_theme = dark;
+      localStorage.setItem('theme', dark);
     }
   }
 });
@@ -220,16 +228,30 @@ app.component('pagination', {
   }
 });
 app.component('options', {
-  props: ['panel', 'show'],
+  props: ['show'],
   methods: {
     changeView: function changeView(is_row) {
       this.$parent.changeView(is_row);
     },
     clearData: function clearData() {
       this.$parent.clearData();
+    },
+    darkTheme: function darkTheme(dark) {
+      this.$parent.darkTheme(dark);
     }
   },
   template: '#options'
 });
+new WOW({
+  boxClass: 'wow',
+  // default
+  animateClass: 'animate__animated',
+  // default
+  offset: 0,
+  // default
+  mobile: true,
+  // default
+  live: true // default
+
+}).init();
 app.mount("#app");
-/* dsdfssdfv */
